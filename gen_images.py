@@ -51,25 +51,22 @@ def arrow(ax, x1, y1, x2, y2, label=None, color=ACCENT, ls='-', lw=2.2, rad=0.0,
                         mutation_scale=18, shrinkA=4, shrinkB=6)
     ax.add_patch(a)
     if label:
-        mx, my = (x1+x2)/2, (y1+y2)/2 + 14
+        mx, my = (x1+x2)/2, (y1+y2)/2 + 16
         ax.text(mx, my, label, ha='center', va='bottom', fontsize=fs,
-                color=color, style='italic',
-                bbox=dict(boxstyle='round,pad=3', facecolor=BG, edgecolor='none', alpha=0.85))
+                color=color, style='italic')
 
 # ---------------------------------------------------------------- 1. architecture
 def architecture():
     W, H = 1600, 1000
     fig, ax = new_fig(W, H)
-    ax.text(W/2, 968, 'MIDLAND — Night-Lab System Architecture', ha='center', va='top',
+    ax.text(W/2, 968, 'MUSELAB — Night-Lab System Architecture', ha='center', va='top',
             fontsize=27, weight='bold', color=TXT)
     ax.text(W/2, 924, 'Two Raspberry Pi 4s · Sense HAT · USB sensors · natural-language control via Muse Gadget',
             ha='center', va='top', fontsize=13, color=DIM)
 
-    # Experimenter panel (top center)
-    ex, ew = W/2-170, 340
-    panel(ax, ex, 792, ew, 100, 'Experimenter', AMBER, 17)
-    item(ax, ex+22, 828, 'laptop / phone', fs=14)
-    item(ax, ex+22, 808, 'natural-language requests', fs=12, color=DIM, style='italic')
+    # Experimenter: single centered line, no box
+    ax.text(W/2, 822, 'Experimenter  ·  laptop / phone  ·  natural-language requests',
+            ha='center', va='center', fontsize=16, color=AMBER, weight='bold')
 
     # Pi panels
     pw = 600
@@ -119,17 +116,17 @@ def architecture():
             color='#55556a', style='italic')
 
     # Arrows (kept short, clear of boxes)
-    arrow(ax, W/2-110, 792, p1x+pw-60, py+ph, '“flash a message”', AMBER, fs=12)
-    arrow(ax, W/2+110, 792, p2x+60, py+ph, '“show the fire sim”', AMBER, fs=12)
-    # Pi <-> LAN: simple vertical pairs at the panel bottoms
+    arrow(ax, W/2-170, 790, p1x+pw-60, py+ph, '“flash a message”', AMBER, fs=12)
+    arrow(ax, W/2+170, 790, p2x+60, py+ph, '“show the fire sim”', AMBER, fs=12)
+    # Pi <-> LAN: simple vertical pairs at the panel bottoms, labels staggered
     arrow(ax, p1x+150, py, p1x+150, 108, '', GREEN, fs=12)
-    ax.text(p1x+150, 118, 'sensor readings ↓', ha='center', fontsize=11, color=GREEN, style='italic')
-    arrow(ax, p1x+260, 104, p1x+260, py, '', GREEN, fs=12)
-    ax.text(p1x+260, 118, '↑ dashboard :8000', ha='center', fontsize=11, color=GREEN, style='italic')
-    arrow(ax, p2x+pw-260, py, p2x+pw-260, 108, '', GREEN, fs=12)
-    ax.text(p2x+pw-260, 118, 'camera frames ↓', ha='center', fontsize=11, color=GREEN, style='italic')
+    ax.text(p1x+150, 88, 'sensor readings ↓', ha='center', fontsize=11, color=GREEN, style='italic')
+    arrow(ax, p1x+300, 104, p1x+300, py, '', GREEN, fs=12)
+    ax.text(p1x+300, 116, '↑ dashboard :8000', ha='center', fontsize=11, color=GREEN, style='italic')
+    arrow(ax, p2x+pw-300, py, p2x+pw-300, 108, '', GREEN, fs=12)
+    ax.text(p2x+pw-300, 88, 'camera frames ↓', ha='center', fontsize=11, color=GREEN, style='italic')
     arrow(ax, p2x+pw-150, 104, p2x+pw-150, py, '', AMBER, fs=12)
-    ax.text(p2x+pw-150, 118, '↑ LED commands', ha='center', fontsize=11, color=AMBER, style='italic')
+    ax.text(p2x+pw-150, 116, '↑ LED commands', ha='center', fontsize=11, color=AMBER, style='italic')
 
     fig.savefig(f'{OUT}/architecture.png', facecolor=BG)
     plt.close(fig)
@@ -140,11 +137,11 @@ def workflow():
     fig, ax = new_fig(W, H)
     ax.text(W/2, H-40, 'The Experiment Loop', ha='center', va='top',
             fontsize=32, weight='bold', color=TXT)
-    ax.text(W/2, H-82, 'Muse Gadget: from question to hardware in minutes — no driver spelunking',
+    ax.text(W/2, H-88, 'Muse Gadget: from question to hardware in minutes — no driver spelunking',
             ha='center', va='top', fontsize=16, color=DIM)
 
     # Circular loop - 5 nodes
-    cx, cy, R = W/2, 500, 260
+    cx, cy, R = W/2, 490, 260
     steps = [
         ('Idea /\nQuestion', '#ff9f43'),
         ('Natural-language\nrequest', AMBER),
@@ -158,14 +155,14 @@ def workflow():
         ang = np.pi/2 + i * 2*np.pi/n
         x, y = cx + R*np.cos(ang), cy + R*np.sin(ang)*0.82
         pos.append((x, y))
-        b = FancyBboxPatch((x-105, y-52), 210, 104,
+        b = FancyBboxPatch((x-140, y-52), 280, 104,
                            boxstyle="round,pad=6,rounding_size=18",
                            facecolor=PANEL, edgecolor=col, linewidth=2.5)
         ax.add_patch(b)
-        ax.text(x, y+8, label.split('\n')[0], ha='center', va='center', fontsize=19,
+        ax.text(x, y+8, label.split('\n')[0], ha='center', va='center', fontsize=17,
                 weight='bold', color=col)
         if '\n' in label:
-            ax.text(x, y-20, label.split('\n')[1], ha='center', va='center', fontsize=19,
+            ax.text(x, y-20, label.split('\n')[1], ha='center', va='center', fontsize=17,
                     weight='bold', color=col)
     # curved arrows between nodes
     for i in range(n):
@@ -276,12 +273,11 @@ def rgb_concept():
         X = cx0+45 + xs*(cx1-cx0-70)
         Y = cy0+35 + ys*(cy1-cy0-70)
         ax.plot(X, Y, color=col, lw=2.4)
-    # dip annotation
+    # dip annotation (no bbox — boxstyle renders oversized)
     dx = cx0+45 + 0.55*(cx1-cx0-70)
     ax.annotate('hand covers lens\n→ intensity drops', xy=(dx, cy0+90), xytext=(dx+40, cy0+170),
                 fontsize=13, color=AMBER, ha='left',
-                arrowprops=dict(arrowstyle='->', color=AMBER, lw=1.8),
-                bbox=dict(boxstyle='round,pad=4', facecolor=BG, edgecolor='#3a3a4d'))
+                arrowprops=dict(arrowstyle='->', color=AMBER, lw=1.8))
     ax.text(cx1-30, cy1-32, 'time →', fontsize=12, color=DIM, ha='right')
     for lab, col, yy in [('R', '#ff5555', 0), ('G', '#39d353', 1), ('B', '#4488ff', 2)]:
         ax.text(cx1-90, cy1-58-yy*24, lab, fontsize=15, weight='bold', color=col)
