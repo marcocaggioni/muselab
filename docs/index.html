@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Midland — Night Lab Experiments</title>
+<title>Muselab — Night Lab Experiments</title>
 <style>
 :root{--bg:#0d1117;--fg:#e6edf3;--accent:#f0a500;--card:#161b22;--border:#30363d}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -35,14 +35,14 @@ code{background:#1c2128;padding:2px 6px;border-radius:4px;font-size:.9em}
 </head>
 <body>
 <header>
-<h1>MIDLAND<span class="dot">.</span></h1>
+<h1>MUSELAB<span class="dot">.</span></h1>
 <p>A night-lab notebook: seven experiments in one evening with two Raspberry Pis,
 a Sense HAT, a micro:bit and a camera — driven by conversation, not code.</p>
 </header>
 <nav>
 <a href="#system">System</a><a href="#philosophy">Philosophy</a>
 <a href="#experiments">Experiments</a><a href="#workflow">Workflow</a>
-<a href="https://github.com/marcocaggioni/midland">GitHub</a>
+<a href="https://github.com/marcocaggioni/muselab">GitHub</a>
 </nav>
 <main>
 <section id="system">
@@ -63,27 +63,27 @@ and <em>what data to collect</em> — never about SSH flags, library versions,
 or serial baud rates. Every experiment below went from a one-line request
 to live hardware in under five minutes.
 </div>
-<p><a href="https://github.com/marcocaggioni/midland/blob/main/PHILOSOPHY.md"
+<p><a href="https://github.com/marcocaggioni/muselab/blob/main/PHILOSOPHY.md"
 style="color:var(--accent)">Read the full essay →</a></p>
 </section>
 
 <section id="experiments">
 <h2>Experiments</h2>
 <div class="cards">
-<div class="card"><div class="num">01</div><h3><a href="https://github.com/marcocaggioni/midland/blob/main/experiments/01-message-beacon.md">Message Beacon</a></h3><p>Flash-until-read chore messenger on the Sense HAT. New message → flashing LEDs; joystick press → message scrolls once, then dark.</p></div>
-<div class="card"><div class="num">02</div><h3><a href="https://github.com/marcocaggioni/midland/blob/main/experiments/02-fire-simulator.md">Fire Simulator</a></h3><p>Doom-style fire algorithm on the 8×8 LED matrix — heat rises, cools, and blooms through black → red → orange → yellow.</p></div>
-<div class="card"><div class="num">03</div><h3><a href="https://github.com/marcocaggioni/midland/blob/main/experiments/03-counter.md">Counter 1–1000</a></h3><p>Each integer 1 to 1000 scrolled on the matrix at one-second intervals. Seventeen minutes of green numbers.</p></div>
-<div class="card"><div class="num">04</div><h3><a href="https://github.com/marcocaggioni/midland/blob/main/experiments/04-rgb-light-meter.md">RGB Light Meter</a></h3><p>Flask dashboard plotting live per-channel average intensity from the camera feed. Cover the lens — watch the traces fall.</p></div>
-<div class="card"><div class="num">05</div><h3><a href="https://github.com/marcocaggioni/midland/blob/main/experiments/05-color-feedback-loop.md">Color Feedback Loop</a></h3><p>Sense HAT cycles red/green/blue under the camera while the RGB meter watches — each channel spikes in turn. A closed loop.</p></div>
-<div class="card"><div class="num">06</div><h3><a href="https://github.com/marcocaggioni/midland/blob/main/experiments/06-microbit-hello.md">micro:bit Hello</a></h3><p>MicroPython flashed over USB in seconds; "hi Tommaso" scrolls on the 5×5 display.</p></div>
-<div class="card"><div class="num">07</div><h3><a href="https://github.com/marcocaggioni/midland/blob/main/experiments/07-cross-pi-sensing.md">Cross-Pi Sensing</a></h3><p>Temperature/humidity read from the TEMPerX232 on Pi #1, displayed on the Sense HAT of Pi #2. Two machines, one observation.</p></div>
+<div class="card"><div class="num">01</div><h3><a href="https://github.com/marcocaggioni/muselab/blob/main/experiments/01-message-beacon.md">Message Beacon</a></h3><p>Flash-until-read chore messenger on the Sense HAT. New message → flashing LEDs; joystick press → message scrolls once, then dark.</p></div>
+<div class="card"><div class="num">02</div><h3><a href="https://github.com/marcocaggioni/muselab/blob/main/experiments/02-fire-simulator.md">Fire Simulator</a></h3><p>Doom-style fire algorithm on the 8×8 LED matrix — heat rises, cools, and blooms through black → red → orange → yellow.</p></div>
+<div class="card"><div class="num">03</div><h3><a href="https://github.com/marcocaggioni/muselab/blob/main/experiments/03-counter.md">Counter 1–1000</a></h3><p>Each integer 1 to 1000 scrolled on the matrix at one-second intervals. Seventeen minutes of green numbers.</p></div>
+<div class="card"><div class="num">04</div><h3><a href="https://github.com/marcocaggioni/muselab/blob/main/experiments/04-rgb-light-meter.md">RGB Light Meter</a></h3><p>Flask dashboard plotting live per-channel average intensity from the camera feed. Cover the lens — watch the traces fall.</p></div>
+<div class="card"><div class="num">05</div><h3><a href="https://github.com/marcocaggioni/muselab/blob/main/experiments/05-color-feedback-loop.md">Color Feedback Loop</a></h3><p>Sense HAT cycles red/green/blue under the camera while the RGB meter watches — each channel spikes in turn. A closed loop.</p></div>
+<div class="card"><div class="num">06</div><h3><a href="https://github.com/marcocaggioni/muselab/blob/main/experiments/06-microbit-hello.md">micro:bit Hello</a></h3><p>MicroPython flashed over USB in seconds; "hi Tommaso" scrolls on the 5×5 display.</p></div>
+<div class="card"><div class="num">07</div><h3><a href="https://github.com/marcocaggioni/muselab/blob/main/experiments/07-cross-pi-sensing.md">Cross-Pi Sensing</a></h3><p>Temperature/humidity read from the TEMPerX232 on Pi #1, displayed on the Sense HAT of Pi #2. Two machines, one observation.</p></div>
 </div>
 </section>
 
 <section id="workflow">
 <h2>Workflow</h2>
 <p>Every experiment followed the same loop — see
-<a href="https://github.com/marcocaggioni/midland/blob/main/WORKFLOW.md" style="color:var(--accent)">WORKFLOW.md</a>:</p>
+<a href="https://github.com/marcocaggioni/muselab/blob/main/WORKFLOW.md" style="color:var(--accent)">WORKFLOW.md</a>:</p>
 <div class="phil">
 <em>1. Idea</em> — "what if the LEDs flashed when there's a message?"<br>
 <em>2. Request</em> — one spoken sentence, no code.<br>
@@ -94,7 +94,7 @@ style="color:var(--accent)">Read the full essay →</a></p>
 </section>
 </main>
 <footer>
-Midland · a night-lab notebook · built in one evening, October 2026<br>
+Muselab · a night-lab notebook · built in one evening, October 2026<br>
 Hardware: 2× Raspberry Pi 4 · Sense HAT v1.0 · micro:bit v2 · TEMPerX232 · USB cameras
 </footer>
 <script>
