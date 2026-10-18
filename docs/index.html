@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Midland — Night Lab Experiments</title>
+<style>
+:root{--bg:#0d1117;--fg:#e6edf3;--accent:#f0a500;--card:#161b22;--border:#30363d}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.6}
+header{padding:60px 20px;text-align:center;border-bottom:1px solid var(--border)}
+header h1{font-size:3em;letter-spacing:2px}
+header h1 .dot{color:var(--accent)}
+header p{color:#8b949e;max-width:640px;margin:12px auto 0;font-size:1.15em}
+nav{position:sticky;top:0;background:rgba(13,17,23,.95);border-bottom:1px solid var(--border);padding:10px 20px;text-align:center;z-index:10}
+nav a{color:#8b949e;text-decoration:none;margin:0 14px;font-size:.95em}
+nav a:hover{color:var(--accent)}
+main{max-width:960px;margin:0 auto;padding:40px 20px}
+section{margin-bottom:60px}
+h2{font-size:1.8em;margin-bottom:16px;border-bottom:2px solid var(--accent);display:inline-block;padding-bottom:4px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px;margin-top:20px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;transition:transform .15s,border-color .15s}
+.card:hover{transform:translateY(-3px);border-color:var(--accent)}
+.card h3{margin-bottom:8px;font-size:1.15em}
+.card h3 a{color:var(--fg);text-decoration:none}
+.card h3 a:hover{color:var(--accent)}
+.card p{color:#8b949e;font-size:.93em}
+.card .num{color:var(--accent);font-weight:bold;font-size:.85em}
+canvas#arch{width:100%;border:1px solid var(--border);border-radius:10px;background:#0a0e14}
+.phil{background:var(--card);border-left:4px solid var(--accent);padding:20px 24px;border-radius:0 10px 10px 0;margin:20px 0;font-size:1.05em}
+.phil em{color:var(--accent);font-style:normal;font-weight:bold}
+footer{text-align:center;padding:40px 20px;color:#8b949e;border-top:1px solid var(--border);font-size:.9em}
+code{background:#1c2128;padding:2px 6px;border-radius:4px;font-size:.9em}
+</style>
+</head>
+<body>
+<header>
+<h1>MIDLAND<span class="dot">.</span></h1>
+<p>A night-lab notebook: seven experiments in one evening with two Raspberry Pis,
+a Sense HAT, a micro:bit and a camera — driven by conversation, not code.</p>
+</header>
+<nav>
+<a href="#system">System</a><a href="#philosophy">Philosophy</a>
+<a href="#experiments">Experiments</a><a href="#workflow">Workflow</a>
+<a href="https://github.com/marcocaggioni/midland">GitHub</a>
+</nav>
+<main>
+<section id="system">
+<h2>The System</h2>
+<p>Two Raspberry Pi 4s on the home LAN, orchestrated through natural language.
+Hover the nodes — the animation shows live data flow.</p>
+<canvas id="arch" width="920" height="420"></canvas>
+</section>
+
+<section id="philosophy">
+<h2>Philosophy</h2>
+<div class="phil">
+Traditional tinkering: <em>datasheets → drivers → dependency hell → debugging</em> —
+hours before the first observation.<br><br>
+The gadget way: <em>idea → spoken request → running demo in minutes</em>.
+The experimenter thinks about the <em>question</em>, the <em>observation</em>,
+and <em>what data to collect</em> — never about SSH flags, library versions,
+or serial baud rates. Every experiment below went from a one-line request
+to live hardware in under five minutes.
+</div>
+<p><a href="https://github.com/marcocaggioni/midland/blob/main/PHILOSOPHY.md"
+style="color:var(--accent)">Read the full essay →</a></p>
+</section>
+
+<section id="experiments">
+<h2>Experiments</h2>
+<div class="cards">
+<div class="card"><div class="num">01</div><h3><a href="https://github.com/marcocaggioni/midland/blob/main/experiments/01-message-beacon.md">Message Beacon</a></h3><p>Flash-until-read chore messenger on the Sense HAT. New message → flashing LEDs; joystick press → message scrolls once, then dark.</p></div>
+<div class="card"><div class="num">02</div><h3><a href="https://github.com/marcocaggioni/midland/blob/main/experiments/02-fire-simulator.md">Fire Simulator</a></h3><p>Doom-style fire algorithm on the 8×8 LED matrix — heat rises, cools, and blooms through black → red → orange → yellow.</p></div>
+<div class="card"><div class="num">03</div><h3><a href="https://github.com/marcocaggioni/midland/blob/main/experiments/03-counter.md">Counter 1–1000</a></h3><p>Each integer 1 to 1000 scrolled on the matrix at one-second intervals. Seventeen minutes of green numbers.</p></div>
+<div class="card"><div class="num">04</div><h3><a href="https://github.com/marcocaggioni/midland/blob/main/experiments/04-rgb-light-meter.md">RGB Light Meter</a></h3><p>Flask dashboard plotting live per-channel average intensity from the camera feed. Cover the lens — watch the traces fall.</p></div>
+<div class="card"><div class="num">05</div><h3><a href="https://github.com/marcocaggioni/midland/blob/main/experiments/05-color-feedback-loop.md">Color Feedback Loop</a></h3><p>Sense HAT cycles red/green/blue under the camera while the RGB meter watches — each channel spikes in turn. A closed loop.</p></div>
+<div class="card"><div class="num">06</div><h3><a href="https://github.com/marcocaggioni/midland/blob/main/experiments/06-microbit-hello.md">micro:bit Hello</a></h3><p>MicroPython flashed over USB in seconds; "hi Tommaso" scrolls on the 5×5 display.</p></div>
+<div class="card"><div class="num">07</div><h3><a href="https://github.com/marcocaggioni/midland/blob/main/experiments/07-cross-pi-sensing.md">Cross-Pi Sensing</a></h3><p>Temperature/humidity read from the TEMPerX232 on Pi #1, displayed on the Sense HAT of Pi #2. Two machines, one observation.</p></div>
+</div>
+</section>
+
+<section id="workflow">
+<h2>Workflow</h2>
+<p>Every experiment followed the same loop — see
+<a href="https://github.com/marcocaggioni/midland/blob/main/WORKFLOW.md" style="color:var(--accent)">WORKFLOW.md</a>:</p>
+<div class="phil">
+<em>1. Idea</em> — "what if the LEDs flashed when there's a message?"<br>
+<em>2. Request</em> — one spoken sentence, no code.<br>
+<em>3. Build</em> — running on hardware in minutes.<br>
+<em>4. Observe</em> — watch it, break it, notice things.<br>
+<em>5. Iterate</em> — "now make it stop flashing after reading."
+</div>
+</section>
+</main>
+<footer>
+Midland · a night-lab notebook · built in one evening, October 2026<br>
+Hardware: 2× Raspberry Pi 4 · Sense HAT v1.0 · micro:bit v2 · TEMPerX232 · USB cameras
+</footer>
+<script>
+// Interactive architecture canvas with animated data flow
+const cv = document.getElementById('arch'), ctx = cv.getContext('2d');
+const W = cv.width, H = cv.height;
+const nodes = [
+ {id:'you', x:460, y:60,  w:150, h:54, label:'You', sub:'voice / chat', c:'#f0a500'},
+ {id:'pi1', x:180, y:220, w:190, h:110, label:'Pi #1 · pi4officiacase', sub:'TEMPerX232 · camera · Kindle dash', c:'#388bfd'},
+ {id:'pi2', x:560, y:220, w:190, h:110, label:'Pi #2 · pi4leddisplay', sub:'Sense HAT · camera · micro:bit', c:'#3fb950'},
+];
+const flows = [
+ {from:'you', to:'pi1', label:'"read the sensor"'},
+ {from:'you', to:'pi2', label:'"make it flash"'},
+ {from:'pi1', to:'pi2', label:'21.7°C / 48.7%'},
+ {from:'pi2', to:'you', label:'photo · dashboard'},
+];
+let t = 0;
+function nodeById(id){return nodes.find(n=>n.id===id);}
+function draw(){
+ ctx.clearRect(0,0,W,H); t += 0.02;
+ // flows
+ flows.forEach((f,i)=>{
+   const a=nodeById(f.from), b=nodeById(f.to);
+   const ax=a.x+a.w/2, ay=a.y+a.h, bx=b.x+b.w/2, by=b.y;
+   const mx=(ax+bx)/2, my=(ay+by)/2 - 30;
+   ctx.strokeStyle='#30363d'; ctx.lineWidth=2; ctx.beginPath();
+   ctx.moveTo(ax,ay); ctx.quadraticCurveTo(mx,my,bx,by); ctx.stroke();
+   // animated packet
+   const p=(t*0.5+i*0.25)%1, q=1-p;
+   const px=q*q*ax+2*q*p*mx+p*p*bx, py=q*q*ay+2*q*p*my+p*p*by;
+   ctx.fillStyle='#f0a500'; ctx.beginPath(); ctx.arc(px,py,5,0,7); ctx.fill();
+   ctx.fillStyle='#8b949e'; ctx.font='11px sans-serif'; ctx.textAlign='center';
+   ctx.fillText(f.label, mx, my-8);
+ });
+ // nodes
+ nodes.forEach(n=>{
+   ctx.fillStyle='#161b22'; ctx.strokeStyle=n.c; ctx.lineWidth=2;
+   ctx.beginPath(); ctx.roundRect(n.x,n.y,n.w,n.h,10); ctx.fill(); ctx.stroke();
+   ctx.fillStyle='#e6edf3'; ctx.font='bold 13px sans-serif'; ctx.textAlign='center';
+   ctx.fillText(n.label, n.x+n.w/2, n.y+24);
+   ctx.fillStyle='#8b949e'; ctx.font='11px sans-serif';
+   n.sub.split(' · ').forEach((s,j)=>ctx.fillText(s, n.x+n.w/2, n.y+44+j*16));
+ });
+ requestAnimationFrame(draw);
+}
+draw();
+</script>
+</body>
+</html>
