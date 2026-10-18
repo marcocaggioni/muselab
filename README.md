@@ -1,4 +1,4 @@
-# Midland
+# Muselab
 
 **One night, two Raspberry Pis, seven experiments — and not a single datasheet.**
 
@@ -41,7 +41,7 @@ for the loop we followed all night, and `experiments/` for the lab notebook.
 ## Repository layout
 
 ```
-midland/
+muselab/
 ├── README.md            # you are here
 ├── PHILOSOPHY.md        # the essay: experiment-first tinkering
 ├── WORKFLOW.md          # the loop: idea → sentence → running demo → observe → iterate
@@ -57,8 +57,8 @@ Every experiment is a single self-contained Python script in `src/`. They were
 written for Raspberry Pi OS (Debian 12/13) with Python 3.11+.
 
 ```bash
-git clone https://github.com/marcocaggioni/midland.git
-cd midland/src
+git clone https://github.com/marcocaggioni/muselab.git
+cd muselab/src
 
 # Example: the message beacon (needs a Sense HAT and the evdev package)
 pip install --break-system-packages evdev sense-hat
